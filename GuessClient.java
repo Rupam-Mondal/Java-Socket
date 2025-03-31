@@ -21,6 +21,7 @@ public class GuessClient {
             String msg1 = in_socket.readLine();
             System.out.println(msg1);
             if(msg1.equals("You guessed correct")){
+                out_socket.println("Thanks");
                 break;
             }
         }
