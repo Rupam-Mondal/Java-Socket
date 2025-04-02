@@ -9,20 +9,22 @@ public class Sender {
         DatagramSocket socket = new DatagramSocket();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter msg = ");
-        String msg = sc.nextLine();
+        while(true){
+            System.out.println("Enter msg = ");
+            String msg = sc.nextLine();
 
-        byte[] buffer = msg.getBytes();
+            byte[] buffer = msg.getBytes();
 
-        DatagramPacket packet = new DatagramPacket(buffer, buffer.length , InetAddress.getByName("127.0.0.1") , 3000);
-        socket.send(packet);
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getByName("127.0.0.1"), 3000);
+            socket.send(packet);
 
-        buffer = new byte[1500];
-        packet = new DatagramPacket(buffer, buffer.length);
-        socket.receive(packet);
+            buffer = new byte[1500];
+            packet = new DatagramPacket(buffer, buffer.length);
+            socket.receive(packet);
 
-        String msg1 = new String(buffer).trim();
-        System.out.println(msg1);
+            String msg1 = new String(buffer).trim();
+            System.out.println(msg1);
+        }
     }
     public static void main(String[] args) {
         try {
